@@ -72,7 +72,7 @@ def get_all_instances(profile, region):
         print(f"Error retrieving instances for profile {profile}: {e}")
         return []
 
-def export_to_excel(data, filename='/reports/ec2_metrics_report.xlsx'):
+def export_to_excel(data, filename='/app/reports/ec2_metrics_report.xlsx'):
     """Export EC2 metrics data to an Excel file."""
     df = pd.DataFrame(data)
     df.to_excel(filename, index=False)
