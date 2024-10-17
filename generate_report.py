@@ -11,7 +11,8 @@ def get_profiles():
     print("I AM IN GET PROFILE")
     all_profiles = {}
     config = configparser.ConfigParser()
-    config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
+    ## config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
+    config.read('/var/lib/jenkins/.aws/config')
 
     print("AFTER CONFIG FILE READ")
 
