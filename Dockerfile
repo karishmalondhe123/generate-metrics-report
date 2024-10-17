@@ -11,7 +11,7 @@ RUN mkdir -p /root/.aws
 COPY . .
 
 # Copy the .aws directory into the container
-COPY /var/lib/jenkins/.aws /root/.aws/
+COPY .aws /root/.aws/
 
 # Create the reports directory
 RUN mkdir -p /app/reports
