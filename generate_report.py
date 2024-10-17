@@ -15,8 +15,8 @@ def get_profiles():
         print("Current working directory:", os.getcwd())
         print("Config file does not exist.")
         return all_profiles 
-    ## config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
-    config.read('/var/lib/jenkins/.aws/config')
+    config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
+    #config.read('/var/lib/jenkins/.aws/config')
 
     print("AFTER CONFIG FILE READ")
 
