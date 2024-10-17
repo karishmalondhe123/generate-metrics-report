@@ -23,7 +23,7 @@ pipeline {
         stage('Run Report Generation') {
             steps {
                 // Run the Docker container, mounting the .aws directory and reports directory
-                sh 'docker run --rm -v /var/lib/jenkins/.aws:/root/.aws -v $WORKSPACE/reports:/app/reports ec2-metrics-report'
+                sh 'docker run --rm -v $JENKINS_HOME/.aws:/root/.aws -v $WORKSPACE/reports:/app/reports ec2-metrics-report'
             }
         }
 
