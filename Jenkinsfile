@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    environment {
+    // environment {
         // Define AWS credentials file environment variable
-        AWS_SHARED_CREDENTIALS_FILE = '/var/lib/jenkins/.aws/credentials'
-    }
+      //  AWS_SHARED_CREDENTIALS_FILE = '/var/lib/jenkins/.aws/credentials'
+    //} 
 
     stages {
         stage('Clone Repository') {
