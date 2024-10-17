@@ -10,6 +10,7 @@ COPY . .
 # Install any necessary dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+#Copy
 COPY . .
 
 # Run generate_report.py when the container launches
