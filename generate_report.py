@@ -11,11 +11,6 @@ def get_profiles():
     print("I AM IN GET PROFILE")
     all_profiles = {}
     config = configparser.ConfigParser()
-    
-   """ if not os.path.exists('/root/.aws'):
-        print("Current working directory:", os.getcwd())
-        print("Config file does not exist.")
-        return all_profiles """
 
     config.read(os.path.expanduser('/root/.aws/config'))
     #config.read('/var/lib/jenkins/.aws/config')
