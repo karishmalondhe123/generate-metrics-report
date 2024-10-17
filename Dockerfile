@@ -7,11 +7,11 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . .
 
+# Create the reports directory
+RUN mkdir -p /app/reports
+
 # Install any necessary dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-#Copy
-COPY . .
 
 # Run generate_report.py when the container launches
 CMD ["python", "/app/generate_report.py"]
