@@ -97,7 +97,13 @@ if __name__ == "__main__":
                 'Memory Utilization': metrics['Memory Utilization'],
             })
 
-    print("Current Directory:", os.getcwd())
+    # Get the current working directory
+    current_directory = os.getcwd()
+
+# List all directories in the current directory
+    directories = [d for d in os.listdir(current_directory) if os.path.isdir(os.path.join(current_directory, d))]
+
+    print("Directories in the current directory:", directories)
     # Export the report to Excel
     report_file = export_to_excel(metrics_report)
 
