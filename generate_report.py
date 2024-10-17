@@ -11,6 +11,9 @@ def get_profiles():
     print("I AM IN GET PROFILE")
     all_profiles = {}
     config = configparser.ConfigParser()
+    if not os.path.exists('/var/lib/jenkins/.aws/config'):
+        print("Config file does not exist.")
+        return all_profiles 
     ## config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
     config.read('/var/lib/jenkins/.aws/config')
 
