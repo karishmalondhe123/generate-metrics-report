@@ -16,6 +16,7 @@ def get_profiles():
     print("AFTER CONFIG FILE READ")
 
     for profile in config.sections():
+        print(f"These are the profile in for loop: {profile}")
         
         profile_region = config.get(profile, 'region', fallback=config.get('default', 'region'))
         all_profiles[profile] = profile_region
