@@ -4,8 +4,14 @@ FROM python:3.9-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Create the .aws directory
+RUN mkdir -p /root/.aws
+
 # Copy the current directory contents into the container at /app
 COPY . .
+
+# Copy the .aws directory into the container
+COPY .aws /root/.aws/
 
 # Create the reports directory
 RUN mkdir -p /app/reports
