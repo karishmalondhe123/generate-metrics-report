@@ -88,6 +88,7 @@ if __name__ == "__main__":
     all_profiles = get_profiles()
     metrics_report = []
 
+    print(f"These are the profile: {all_profiles}")
     for profile, region in all_profiles.items():
         print(f"Collecting metrics for profile: {profile} in region: {region}")
         instance_ids = get_all_instances(profile, region)
