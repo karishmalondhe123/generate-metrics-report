@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git clone 'https://github.com/karishmalondhe123/generate-metrics-report.git'  // Replace with your repository URL
+                // Cloning the master/main branch (make sure to specify the correct branch name)
+                git branch: 'main', url: 'https://github.com/karishmalondhe123/generate-metrics-report.git'
             }
         }
 
