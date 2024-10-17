@@ -97,6 +97,7 @@ if __name__ == "__main__":
                 'Memory Utilization': metrics['Memory Utilization'],
             })
 
+    print("Current Directory:", os.getcwd())
     # Export the report to Excel
     report_file = export_to_excel(metrics_report)
 
