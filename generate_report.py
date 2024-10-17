@@ -54,6 +54,7 @@ def get_metric_statistics(cloudwatch_client, instance_id, metric_name, namespace
         if 'Datapoints' in response and response['Datapoints']:
             return response['Datapoints'][0].get('Average', 'N/A')
         else:
+            print(f"No data found for metric {metric_name} for instance {instance_id}")
             return 'N/A'
     except (NoCredentialsError, PartialCredentialsError, BotoCoreError) as e:
         print(f"Error fetching metric {metric_name} for instance {instance_id}: {e}")
@@ -86,9 +87,11 @@ if __name__ == "__main__":
     for profile, region in all_profiles.items():
         print(f"Collecting metrics for profile: {profile} in region: {region}")
         instance_ids = get_all_instances(profile, region)
+        print(f"Instance IDs for profile {profile}: {instance_ids}")
 
         for instance_id in instance_ids:
             metrics = get_instance_metrics(profile, region, instance_id)
+            print(f"Metrics for instance {instance_id}: {metrics}")
             metrics_report.append({
                 'Profile': profile,
                 'Region': region,
@@ -104,6 +107,10 @@ if __name__ == "__main__":
     directories = [d for d in os.listdir(current_directory) if os.path.isdir(os.path.join(current_directory, d))]
 
     print("Directories in the current directory:", directories)
+
+    # Before exporting the report
+    print("Metrics report data:", metrics_report)
+
     # Export the report to Excel
     report_file = export_to_excel(metrics_report)
 
