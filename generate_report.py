@@ -8,11 +8,15 @@ from botocore.exceptions import NoCredentialsError, PartialCredentialsError, Bot
 
 def get_profiles():
     """Retrieve AWS profiles and regions from AWS config."""
+    print("I AM IN GET PROFILE")
     all_profiles = {}
     config = configparser.ConfigParser()
     config.read(os.path.expanduser('~/.aws/config'))
 
+    print("AFTER CONFIG FILE READ")
+
     for profile in config.sections():
+        
         profile_region = config.get(profile, 'region', fallback=config.get('default', 'region'))
         all_profiles[profile] = profile_region
 
