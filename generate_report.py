@@ -11,11 +11,13 @@ def get_profiles():
     print("I AM IN GET PROFILE")
     all_profiles = {}
     config = configparser.ConfigParser()
-    if not os.path.exists('/var/lib/jenkins/.aws/config'):
+    
+   """ if not os.path.exists('/root/.aws'):
         print("Current working directory:", os.getcwd())
         print("Config file does not exist.")
-        return all_profiles 
-    config.read(os.path.expanduser('/var/lib/jenkins/.aws/config'))
+        return all_profiles """
+
+    config.read(os.path.expanduser('/root/.aws/config'))
     #config.read('/var/lib/jenkins/.aws/config')
 
     print("AFTER CONFIG FILE READ")
@@ -95,6 +97,22 @@ if __name__ == "__main__":
     metrics_report = []
 
     print("AWS config path:", os.path.expanduser('~/.aws/config'))
+    
+    # Get the current working directory
+    current_directory = os.getcwd()
+    print(f"current_directory: {current_directory}")
+
+# List all directories in the current directory
+    #directories = [d for d in os.listdir(current_directory) if os.path.isdir(os.path.join(current_directory, d))]
+    
+    root_dir = '/root'  # Specify the directory to walk through
+
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        print(f"Directory: {dirpath}")
+        for dirname in dirnames:
+            print(f"Subdirectory: {os.path.join(dirpath, dirname)}")
+        for filename in filenames:
+            print(f"File: {os.path.join(dirpath, filename)}")
 
     print(f"These are the profile: {all_profiles}")
     for profile, region in all_profiles.items():
@@ -113,13 +131,10 @@ if __name__ == "__main__":
                 'Memory Utilization': metrics['Memory Utilization'],
             })
 
-    # Get the current working directory
-    current_directory = os.getcwd()
+    
 
-# List all directories in the current directory
-    directories = [d for d in os.listdir(current_directory) if os.path.isdir(os.path.join(current_directory, d))]
 
-    print("Directories in the current directory:", directories)
+    #print("Directories in the current directory:", directories)
 
     # Before exporting the report
     print("Metrics report data:", metrics_report)
