@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/karishmalondhe123/generate-metrics-report.git'  // Replace with your repository URL
+                git clone 'https://github.com/karishmalondhe123/generate-metrics-report.git'  // Replace with your repository URL
             }
         }
 
